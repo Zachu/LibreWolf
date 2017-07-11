@@ -146,11 +146,12 @@ function print_view(string $view, array $arguments = [])
     include $view;
 }
 
-function print_rules($lang) {
- $ruleIndex = "lang/$lang/rules/index.php";
-	if (is_file($ruleIndex)) {
-		include $ruleIndex;
-	} else{
-	throw new \Exception("Language $lang doesn't have a rule index");
-	}
+function print_rules($lang)
+{
+    $ruleIndex = "lang/$lang/rules/index.php";
+    if (is_file($ruleIndex)) {
+        include $ruleIndex;
+    } else {
+        throw new \Exception("Language $lang doesn't have a rule index");
+    }
 }
