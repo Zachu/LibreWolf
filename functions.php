@@ -88,7 +88,7 @@ function is_new_row(int $i, array $role_count): bool
     return ($i % $role_count[0] === 0);
 }
 
-function print_roles(array $roles, array $role_count): void
+function print_roles(array $roles, array $role_count)
 {
     $count = $role_count[0] * $role_count[1];
     for ($i = 0; $i < count($roles); $i += $count) {
@@ -99,7 +99,7 @@ function print_roles(array $roles, array $role_count): void
     }
 }
 
-function print_role_fronts(array $roles, array $role_count, int $no): void
+function print_role_fronts(array $roles, array $role_count, int $no)
 {
     echo '<div class="page">';
     for ($i = 0; $i < count($roles); $i++) {
@@ -118,7 +118,7 @@ function print_role_fronts(array $roles, array $role_count, int $no): void
     echo '</div></div>';
 }
 
-function print_role_backs(int $count, array $role_count): void
+function print_role_backs(int $count, array $role_count)
 {
     $view = dirtrim('views') . 'card_back.php';
 
@@ -135,7 +135,7 @@ function print_role_backs(int $count, array $role_count): void
     echo '</div></div>';
 }
 
-function print_view(string $view, array $arguments = []): void
+function print_view(string $view, array $arguments = [])
 {
     $view = dirtrim('views') . $view . '.php';
     if (!is_file($view)) {
@@ -144,4 +144,13 @@ function print_view(string $view, array $arguments = []): void
 
     extract($arguments, EXTR_SKIP);
     include $view;
+}
+
+function print_rules($lang) {
+ $ruleIndex = "lang/$lang/rules/index.php";
+	if (is_file($ruleIndex)) {
+		include $ruleIndex;
+	} else{
+	throw new \Exception("Language $lang doesn't have a rule index");
+	}
 }
