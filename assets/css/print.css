@@ -9,8 +9,12 @@ html, body {
   font-size: 12pt;
 }
 
-section {
+section, article {
   page-break-inside: avoid;
+}
+
+article {
+  margin: 2mm;
 }
 
 .row {
