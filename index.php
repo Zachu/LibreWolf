@@ -10,6 +10,9 @@
 </head>
 <body>
 
+<section class="rules">
+<?php print_rules($lang); ?>
+</section>
 <section class="roles">
     <?php print_roles($roles, $role_count);?>
 </section>
