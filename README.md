@@ -117,4 +117,12 @@ So the role file could be reduced to:
 
 # Building a printable pdf
 
-@TODO
+With Chrome or Chromium 59 installed (for headless support):
+```
+chromium-browser --headless --disable-gpu http://{URL_TO_LibreWolf}/
+```
+
+After checking out a certain tag:
+```
+$ BUILDLANG="fi" && BUILDVER=$(git describe --exact-match --tags $(git log -n1 --pretty='%h')) && chromium-browser --headless --disable-gpu --print-to-pdf="dist/LibreWolf-${BUILDVER}-${BUILDLANG}.pdf" http://localhost/LibreWolf/?lang=${BUILDLANG}
+```
