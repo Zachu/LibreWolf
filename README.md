@@ -6,7 +6,11 @@ The story of the game is set in a Dark Ages when there was still a pinch of magi
 
 # I only want to play!
 
-@TODO how to print the game files
+1. Head to the [Releases section](https://github.com/Zachu/LibreWolf/releases) and print the latest .pdf file!
+2. Invite lots of friends
+3. At the end of the printed pdf you get a bunch of playing cards. Grab a pair of scissors and work on them, while waiting for your friends.
+4. Read the game instructions while still waiting for your friends.
+5. Do as the instructions tell you to and have fun while playing LibreWolf!
 
 # Installation
 
