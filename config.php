@@ -25,6 +25,7 @@
         'lone_wolf',
         'freemason',
         'freemason2',
+        'lovers',
     ],
 
     'rules'      => [
