@@ -10,12 +10,12 @@
 </head>
 <body>
 
-<section class="rules">
-<?php print_rules($lang); ?>
-</section>
-<section class="roles">
-    <?php print_roles($roles, $role_count);?>
-</section>
+<div class="rules">
+<?php print_rules($lang, $roles);?>
+</div>
+<div class="roles">
+    <?php print_role_cards($roles, $role_count);?>
+</div>
 
 </body>
 </html>

@@ -88,9 +88,13 @@ function is_new_row(int $i, array $role_count): bool
     return ($i % $role_count[0] === 0);
 }
 
-function print_roles(array $roles, array $role_count)
+function print_role_cards(array $roles, array $role_count)
 {
     $count = $role_count[0] * $role_count[1];
+    $roles = array_filter($roles, function ($role) {
+        return !(isset($role['skip_cards']) && $role['skip_cards']);
+    });
+
     for ($i = 0; $i < count($roles); $i += $count) {
         $roles_slice = array_slice($roles, $i, $count);
 
