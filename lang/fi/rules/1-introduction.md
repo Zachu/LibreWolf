@@ -1,3 +1,4 @@
+<section class="rule introduction" markdown="1">
 # LibreWolf
 
 LibreWolf on versio seurapelistä Ihmissusi tai Mafioso. Pelissä pelaajille jaetaan rooli ja tehtävä, jotka ovat vain pelaajan itsensä tiedossa. Yhteistyössä joukkueensa kanssa pelaajat yrittävät keskustelemalla keskenään selviytyä elävinä pelin loppuun asti.
@@ -17,3 +18,4 @@ Peli etenee vaiheissa päivä ja yö kerrallaan. Öisin ihmissudet saalistaa, p�
 ## Voittaminen
 
 Ihmissudet voittavat pelin, kun kaikki kyläläiset on syöty. Kyläläiset voittavat pelin mikäli ihmissusista päästään eroon. Mutta kuka onkaan kukin? Puhuuko joku epäilyttävän paljon kiinnittääkseen huomion ihmismäisyyteensä? Hän voi olla ihmissusi. Toinen kyläläinen vaikuttaa olevan poikkeuksellisen hiljaa. Olisikohan hän ihmissusi? Tässä pelissä parhaat valehtelijat palkitaan. Roolipeli alkakoon!
+</section>

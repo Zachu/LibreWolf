@@ -1,8 +1,13 @@
 <?php
 $files = glob(dirname(__FILE__) . '/*.md');
-$md    = new Parsedown();
+$md    = new ParsedownExtra();
 foreach ($files as $file) {
-    echo "<article class=\"rule " . basename($file, '.md') . "\">\n";
-    echo $md->text(file_get_contents($file)) . "\n";
-    echo "</article>\n\n";
+    $output = $md->text(file_get_contents($file)) . "\n";
+    if (strpos($output, '{{ print_roles_with_info }}') !== false) {
+        $output = str_replace(
+            '{{ print_roles_with_info }}',
+            print_roles_with_info($lang, $roles),
+            $output);
+    }
+    echo $output;
 }

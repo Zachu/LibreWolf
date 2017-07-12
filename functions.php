@@ -150,7 +150,7 @@ function print_view(string $view, array $arguments = [])
     include $view;
 }
 
-function print_rules($lang)
+function print_rules(string $lang, array $roles)
 {
     $ruleIndex = "lang/$lang/rules/index.php";
     if (is_file($ruleIndex)) {
@@ -158,4 +158,20 @@ function print_rules($lang)
     } else {
         throw new \Exception("Language $lang doesn't have a rule index");
     }
+}
+
+function print_roles_with_info(string $lang, array $roles)
+{
+    $output = '';
+    foreach ($roles as $role) {
+        if (isset($role['skip_rules']) && $role['skip_rules']) {
+            continue;
+        }
+
+        ob_start();
+        include "lang/$lang/templates/rulebook_role.php";
+        $output .= ob_get_clean();
+    }
+
+    return $output;
 }

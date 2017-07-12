@@ -1,4 +1,6 @@
+<section class="rule variations" markdown="1">
 # Vaihtoehtoiset pelitavat
+
 Tätä peliä voi muokata pelaajien taitojen ja mieltymyksen mukaisesti monilla tavoin. Alla on listattu muutamia yleisesti käytössä olevia muunnelmia sääntöihin.
 
 ## Lisäroolit
@@ -14,3 +16,8 @@ Käytetään yhdessä Lisäroolit-muutoksen kanssa. Suositellaan kokeneille pela
 ## Ihmissusilauma
 
 Niin kauan kuin ihmissusia on elossa kolme tai enemmän, saavat ihmissudet öisin kaksi saalista.
+
+## Pormestarin ääni ratkaisee
+
+Kyläläisten pormestarin valinta päivä-vaiheessa ei ole pakollista. Voidaan kuitenkin pelata niin, että pormestari valitaan joka aamu (tai harvemmin, tai koko pelaajan eliniäksi), ja äänestysten tasatilanteissa pormestarin ääni ratkaisee.
+</section>

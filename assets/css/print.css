@@ -9,12 +9,16 @@ html, body {
   font-size: 12pt;
 }
 
-section, article {
+div.rules section {
+  page-break-after: always;
+}
+
+div.rules article {
   page-break-inside: avoid;
 }
 
-article {
-  margin: 2mm;
+div.rules {
+  margin: 5mm;
 }
 
 .row {
