@@ -94,6 +94,7 @@ Structure of role file:
     'name'     => 'Seer',
     'description' => 'During a day figure out with other villagers who are the werewolves, and get rid of them before it is too late!',
     'special'  => 'Once a night you can see if a player is a werewolf.',
+    'info'     => 'Gamemaster shows you yes-sign if your inquiry hits a werewolf.',
 ];
 ```
 __team:__ Which team the role belongs to.
@@ -101,6 +102,7 @@ __name:__ The name of the role.
 __special:__ A special ability of the role. Not required.
 __description:__ A common goal for the role to achieve.
 __template:__ Specify a template that the role file extends.
+__info:__ Additional information about how the role works.
 
 Common usage of the templates:
 ```php
@@ -116,17 +118,20 @@ So the role file could be reduced to:
     'template' => 'villager',
     'name'     => 'Seer',
     'special'  => 'Once a night you can see if a player is a werewolf.',
+    'info'     => 'Gamemaster shows you yes-sign if your inquiry hits a werewolf.',
 ];
 ```
 
 # Building a printable pdf
 
-With Chrome or Chromium 59 installed (for headless support):
+You can just print the webpage to a PDF file.
+
+Or with Chrome or Chromium 59 installed (for headless support):
 ```
 chromium-browser --headless --disable-gpu http://{URL_TO_LibreWolf}/
 ```
 
-After checking out a certain tag:
+After checking out a certain tag, you can name the output file accordingly:
 ```
 $ BUILDLANG="fi" && BUILDVER=$(git describe --exact-match --tags $(git log -n1 --pretty='%h')) && chromium-browser --headless --disable-gpu --print-to-pdf="dist/LibreWolf-${BUILDVER}-${BUILDLANG}.pdf" http://localhost/LibreWolf/?lang=${BUILDLANG}
 ```
