@@ -87,3 +87,38 @@ article.role {
   display:inline-block;
   font-size: .8em;
 }
+
+section {
+  clear: both;
+}
+
+div.gamemaster ul.roletable {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  margin:0;
+  padding:0;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 1px;
+}
+
+div.gamemaster ul.roletable li {
+  width: 50mm;
+  padding: 1mm 0mm 10mm 1mm;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 0 1px 1px 0;
+}
+
+div.gamemaster .night_table table
+{
+  margin-top: 5mm;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+div.gamemaster .night_table td
+{
+  border: 1px solid black;
+  width:2%;
+}

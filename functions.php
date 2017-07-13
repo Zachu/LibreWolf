@@ -175,3 +175,47 @@ function print_roles_with_info(string $lang, array $roles)
 
     return $output;
 }
+
+function print_gamemasters_role_table(array $roles)
+{
+    echo "<ul class=\"gamemaster roletable\">\n";
+    foreach ($roles as $role) {
+        echo "<li>$role[name]</li>\n";
+    }
+    echo "</ul>\n\n";
+}
+
+function print_gamemaster_night_table(array $roles)
+{
+    $nighters      = [];
+    $firstnighters = [];
+    foreach ($roles as $role) {
+        $wakeup = $role['wakeup_phase'] ?? 0;
+        if ($wakeup > 0) {
+            $nighters[$wakeup][] = $role;
+        } elseif ($wakeup < 0) {
+            $firstnighters[abs($wakeup)][] = $role;
+        }
+    }
+
+    ksort($nighters);
+    ksort($firstnighters);
+
+    // echo "<table>\n<tr><th>#</th>\n";
+    // foreach ($firstnighters as $rolePhase) {
+    //     echo "<th>" . implode(', ', array_unique(array_map(function ($role) {return $role['name'];}, $rolePhase))) . "</th>";
+    // }
+    // echo "</tr>\n<tr><td>1</td>" . str_repeat("<td></td>", count($firstnighters)) . "</tr>\n</table>\n\n";
+
+    echo "<table>\n<tr><th>#</th>\n";
+    foreach ($nighters as $rolePhase) {
+        echo "<th>" . implode('<br/>', array_unique(array_map(function ($role) {return $role['name'];}, $rolePhase))) . "</th>";
+    }
+    echo "</tr>\n";
+
+    for ($i = 1; $i <= 15; $i++) {
+        echo "<tr><td>$i</td>" . str_repeat("<td></td>", count($nighters)) . "</tr>\n";
+    }
+    echo "</table>\n\n";
+
+};

@@ -13,8 +13,18 @@
 <div class="rules">
 <?php print_rules($lang, $roles);?>
 </div>
+
 <div class="roles">
     <?php print_role_cards($roles, $role_count);?>
+</div>
+
+<div class="gamemaster">
+    <section class="role_table">
+        <?php print_gamemasters_role_table($roles);?>
+    </section>
+    <section class="night_table">
+        <?php print_gamemaster_night_table($roles);?>
+    </section>
 </div>
 
 </body>

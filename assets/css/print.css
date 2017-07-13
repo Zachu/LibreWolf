@@ -17,8 +17,9 @@ div.rules article {
   page-break-inside: avoid;
 }
 
-div.rules {
+div.rules, div.gamemaster {
   margin: 5mm;
+  padding-top:5mm;
 }
 
 .row {
