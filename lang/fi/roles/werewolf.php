@@ -1,4 +1,5 @@
 <?php return [
-    'template' => 'werewolf',
-    'name'     => 'Ihmissusi',
+    'template'     => 'werewolf',
+    'name'         => 'Ihmissusi',
+    'wakeup_phase' => 3,
 ];

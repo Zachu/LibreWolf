@@ -103,6 +103,10 @@ __special:__ A special ability of the role. Not required.
 __description:__ A common goal for the role to achieve.
 __template:__ Specify a template that the role file extends.
 __info:__ Additional information about how the role works.
+__wakeup_phase:__ Information for when the role wakes up at night. This is used to generate the gamemasters helper table.
+Wakeup phases:
+ - 0: Do not wake up at night. This is the default.
+ - Positive integers: Wake up at night. Start from 1 and continue increasing. Multiple roles can be at the same wakeup_phase, like for example all the wolves are.
 
 Common usage of the templates:
 ```php
