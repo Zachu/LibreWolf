@@ -14,7 +14,20 @@ The story of the game is set in a Dark Ages when there was still a pinch of magi
 
 # Installation
 
-@TODO
+Note that you don't have to install anything in order to just play the game. Just download and print the pdf, cut some cards and have a go! Check out the "I only want to play" section for that. Installation is needed if you wish to change something in this game.
+
+1. Clone the repository
+
+   With ssh: `$ git clone git@github.com:Zachu/LibreWolf.git`
+
+   With https: `$ git clone https://github.com/Zachu/LibreWolf.git`
+
+2. Install dependencies
+
+   `$ composer install`
+
+3. Start a web server and point it to the cloned directory
+4. Go to your web URL
 
 ## Settings
 
