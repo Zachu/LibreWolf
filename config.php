@@ -1,5 +1,5 @@
 <?php return [
-    'roles'      => [
+    'roles'           => [
         'farmer',
         'butcher',
         'blacksmith',
@@ -28,33 +28,28 @@
         'lovers',
     ],
 
-    'rules'      => [
-        'epilogue',
-        'rules' => [
-            'setup',
-            'phases',
-            'death',
-            'variations',
-        ],
-        'roles',
-        'why',
-        'contributions',
-        'version',
-        'license',
+    'night_phases'    => [
+        ['medium'],
+        ['seer'],
+        ['werewolf', 'werewolf2', 'werecub', 'alphawolf', 'lone_wolf'],
+        ['hunter'],
+        ['witch'],
+        ['healer'],
     ],
 
-    'role_count' => [
+    'skip_role_cards' => ['lovers'],
+    'skip_role_rules' => ['werewolf2', 'freemason2'],
+
+    'role_count'      => [
         'a4' => [
             'portrait'  => [3, 3],
             'landscape' => [4, 2],
         ],
     ],
 
-    'default'    => [
+    'default'         => [
         'paperSize'   => 'a4',
         'orientation' => 'portrait',
         'lang'        => 'fi',
     ],
-
-    'version'    => '0.0.0',
 ];
