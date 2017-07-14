@@ -9,16 +9,16 @@ use Illuminate\Translation\Translator;
 class TranslatedModel extends Model
 {
     /**
-     * Translator to handle the translations.
-     * @var Illuminate\Translation\Translator
-     */
-    protected $translator;
-
-    /**
      * List of attribute names that are translated.
      * @var array
      */
     protected $translated = [];
+
+    /**
+     * Translation group where to search the translations (e.g. a filename).
+     * @var string
+     */
+    protected $translationGroup;
 
     /**
      * Prefix for model translation groups (e.g. files).
@@ -27,10 +27,10 @@ class TranslatedModel extends Model
     protected $translationPrefix;
 
     /**
-     * Translation group where to search the translations (e.g. a filename).
-     * @var string
+     * Translator to handle the translations.
+     * @var Illuminate\Translation\Translator
      */
-    protected $translationGroup;
+    protected $translator;
 
     /**
      * Construct a model that has translations.
@@ -41,19 +41,6 @@ class TranslatedModel extends Model
     {
         parent::__construct($attributes);
         $this->translator = $translator;
-    }
-
-    /**
-     * Combines $translationPrefix, $translationGroup and a selected $key
-     * to a string for the translator.
-     * @param  string $key A key to translate.
-     * @return string      Translation for the key.
-     */
-    public function getTranslationKey($key)
-    {
-        return ($this->translationPrefix ?? '') .
-            (isset($this->translationGroup) ? $this->translationGroup . '.' : '') .
-            $key;
     }
 
     /**
@@ -68,6 +55,20 @@ class TranslatedModel extends Model
         }
 
         return parent::__get($key);
+    }
+
+    /**
+     * Magic isset to check if a attribute or translation exists.
+     * @param  mixed  $attribute AttributeName to check.
+     * @return boolean           true if attribute is set, false otherwise.
+     */
+    public function __isset($key)
+    {
+        if (in_array($key, $this->translated)) {
+            return $this->translator->has($this->getTranslationKey($key));
+        }
+
+        return parent::__isset($key);
     }
 
     /**
@@ -89,16 +90,15 @@ class TranslatedModel extends Model
     }
 
     /**
-     * Magic isset to check if a attribute or translation exists.
-     * @param  mixed  $attribute AttributeName to check.
-     * @return boolean           true if attribute is set, false otherwise.
+     * Combines $translationPrefix, $translationGroup and a selected $key
+     * to a string for the translator.
+     * @param  string $key A key to translate.
+     * @return string      Translation for the key.
      */
-    public function __isset($key)
+    public function getTranslationKey($key)
     {
-        if (in_array($key, $this->translated)) {
-            return $this->translator->has($this->getTranslationKey($key));
-        }
-
-        return parent::__isset($key);
+        return ($this->translationPrefix ?? '') .
+            (isset($this->translationGroup) ? $this->translationGroup . '.' : '') .
+            $key;
     }
 }

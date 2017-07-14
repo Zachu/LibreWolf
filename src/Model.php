@@ -46,6 +46,16 @@ class Model
     }
 
     /**
+     * Magic isset for checking if attribute exists.
+     * @param  mixed  $attribute AttributeName to check.
+     * @return boolean           true if attribute is set, false otherwise.
+     */
+    public function __isset($attribute)
+    {
+        return isset($this->attributes[$attribute]) || isset($this->$attribute);
+    }
+
+    /**
      * Magic setter to handle $model->attribute modify.
      * @param  mixed  $attribute AttributeName to modify.
      * @param  mixed  $value     Value to set the attribute.
@@ -65,15 +75,5 @@ class Model
         }
 
         $this->attributes[$attribute] = $value;
-    }
-
-    /**
-     * Magic isset for checking if attribute exists.
-     * @param  mixed  $attribute AttributeName to check.
-     * @return boolean           true if attribute is set, false otherwise.
-     */
-    public function __isset($attribute)
-    {
-        return isset($this->attributes[$attribute]) || isset($this->$attribute);
     }
 }
