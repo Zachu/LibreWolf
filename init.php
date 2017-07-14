@@ -2,6 +2,7 @@
 require 'vendor/autoload.php';
 
 use zachu\LibreWolf\RoleRepository;
+use duncan3dc\Laravel\BladeInstance;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
@@ -16,13 +17,11 @@ $app['config'] = new Config(include 'config.php');
 $fileloader        = new FileLoader(new Filesystem, 'lang');
 $app['translator'] = new Translator($fileloader, 'fi');
 
+// Initialize templating engine
+$app['templating'] = new BladeInstance('views', 'cache');
+
 // Populate role repository
 $app['roles'] = new RoleRepository($app['translator']);
 foreach ($app['config']->get('roles') as $role) {
     $app['roles']->create(['id' => $role]);
-}
-
-// App
-foreach ($app['roles']->findByIsSet('name') as $role) {
-    var_dump([$role->name, $role->team, $role->description, $role->special, $role->info]);
 }

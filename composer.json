@@ -1,7 +1,8 @@
 {
     "require": {
         "illuminate/translation": "^5.4",
-        "illuminate/config": "^5.4"
+        "illuminate/config": "^5.4",
+        "duncan3dc/blade": "^3.4"
     },
 
     "autoload": {
