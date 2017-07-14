@@ -8,6 +8,10 @@ use Illuminate\Translation\Translator;
  */
 class Role extends TranslatedModel
 {
+    protected $guarded = [
+        'id',
+    ];
+
     protected $translated = [
         'name', // Name of the role.
         'description', // Winning goal of the role.
@@ -18,9 +22,13 @@ class Role extends TranslatedModel
 
     protected $translationPrefix = 'role_';
 
-    public function __construct(string $id, Translator $translator, array $attributes = [])
+    public function __construct(Translator $translator, array $attributes = [])
     {
         parent::__construct($attributes, $translator);
-        $this->translationGroup = $id;
+        if (!isset($this->id)) {
+            throw new \Exception("Attribute id is required");
+        }
+
+        $this->translationGroup = $this->id;
     }
 }

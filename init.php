@@ -19,7 +19,7 @@ $app['translator'] = new Translator($fileloader, 'fi');
 // Populate role repository
 $app['roles'] = new RoleRepository($app['translator']);
 foreach ($app['config']->get('roles') as $role) {
-    $app['roles']->create($role);
+    $app['roles']->create(['id' => $role]);
 }
 
 // App
