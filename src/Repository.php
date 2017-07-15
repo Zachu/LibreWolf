@@ -28,6 +28,18 @@ class Repository implements \Iterator
         return $this->items[$this->position];
     }
 
+    public function filter(callable $filter)
+    {
+        $filtered = [];
+        foreach ($this->items as $item) {
+            if ($filter($item)) {
+                $filtered[] = $item;
+            }
+        }
+
+        return $this->withItems($filtered);
+    }
+
     public function find($id)
     {
         foreach ($this->items as $item) {
@@ -98,9 +110,14 @@ class Repository implements \Iterator
         }
     }
 
+    public function nth(int $index)
+    {
+        return $this->items[$index] ?? null;
+    }
+
     public function paginate($limit = 15, $skip = 0)
     {
-        return $this->withItems(array_slice($this->items, $skip, $limit, true));
+        return $this->withItems(array_slice($this->items, $skip, $limit));
     }
 
     public function rewind()
