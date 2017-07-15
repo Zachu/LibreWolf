@@ -9,5 +9,23 @@
 </head>
 <body>
 
+<div class="rulebook">
+    @include('rulebook')
+</div>
+
+<div class="rolecards">
+    @include('rolecards', [
+        'roles' => $roles->filter(function($role) use ($skip_role_cards) {
+            return !in_array($role->id, $skip_role_cards);
+        })
+    ])
+</div>
+
+<div class="gamemaster">
+    @include('gamemaster.roles')
+
+    @include('gamemaster.nights')
+</div>
+
 </body>
 </html>
