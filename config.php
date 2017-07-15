@@ -40,7 +40,7 @@
     'skip_role_cards' => ['lovers'],
     'skip_role_rules' => ['werewolf2', 'freemason2'],
 
-    'role_count'      => [
+    'role_card_count' => [
         'a4' => [
             'portrait'  => [3, 3],
             'landscape' => [4, 2],
