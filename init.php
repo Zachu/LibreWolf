@@ -19,20 +19,46 @@ $app = [];
 $app['config'] = new Config(include 'config.php');
 
 /**
+ * Parse user provided configuration
+ */
+// Language
+if (isset($_GET['lang']) && is_dir(__DIR__ . '/lang/' . $_GET['lang'])) {
+    $app['locale'] = strtolower($_GET['lang']);
+} else {
+    $app['locale'] = strtolower($app['config']->get('default.lang'));
+}
+
+// Paper size
+if (isset($_GET['paperSize']) && $app['config']->has('role.card_count.' . $_GET['paperSize'])) {
+    $app['paperSize'] = strtolower($_GET['paperSize']);
+} else {
+    $app['paperSize'] = strtolower($app['config']->get('default.paperSize'));
+}
+
+// Paper orientation
+if (isset($_GET['orientation']) && in_array($_GET['orientation'], ['portrait', 'landscape'])) {
+    $app['orientation'] = strtolower($_GET['orientation']);
+} else {
+    $app['orientation'] = strtolower($app['config']->get('default.orientation'));
+}
+
+// Calculate fetch the role card dimensions
+$app['role_card_count'] = $app['config']->get('role_card_count.' . $app['paperSize'] . '.' . $app['orientation']);
+
+/**
  * Initialize Translator for localisation
  */
-if (isset($_GET['lang']) && is_dir(__DIR__ . '/lang/' . $_GET['lang'])) {
-    $language = strtolower($_GET['lang']);
-} else {
-    $language = strtolower($app['config']->get('default.lang'));
+{
+    $fileloader = new FileLoader(new Filesystem, 'lang');
 }
-$fileloader        = new FileLoader(new Filesystem, 'lang');
-$app['translator'] = new Translator($fileloader, $language);
+
+$app['translator'] = new Translator($fileloader, $app['locale']);
 
 /**
  * Initialize templating engine
  */
-$app['templating'] = new BladeInstance('views', 'cache');
+$app['template'] = new BladeInstance('views', 'cache');
+$app['template']->addPath('lang/' . $app['translator']->getLocale());
 
 /**
  * Populate role repository
